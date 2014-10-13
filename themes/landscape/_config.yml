@@ -20,6 +20,7 @@ widgets:
 - tagcloud
 - archive
 - recent_posts
+- weibo
 
 # Miscellaneous
 google_analytics:
