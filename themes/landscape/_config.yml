@@ -22,6 +22,16 @@ widgets:
 - recent_posts
 - weibo
 
+# Plugins
+plugins:
+- hexo-generator-feed
+
+# feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
 # Miscellaneous
 google_analytics:
 favicon: /favicon.ico
