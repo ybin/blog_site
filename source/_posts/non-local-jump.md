@@ -94,8 +94,8 @@ void siglongjmp(sigjump_buf env, int retval);
 ```c
 #include <stdio.h>
 #include <signal.h>
-#inlucde <setjmp.h>
-#include <unistd.h> // for sleep()
+#include <setjmp.h>
+#include <unistd.h>             // for sleep()
 
 static sigjmp_buf env;
 
@@ -118,7 +118,7 @@ int main()
     int i = 0;
     while(i++ < 10)  {
         sleep(1); // sleep 1 second
-        printf("processing...\n);
+        printf("processing...\n");
     }
     
     return 0;
