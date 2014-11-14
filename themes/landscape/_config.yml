@@ -16,9 +16,9 @@ fancybox: true
 sidebar: right
 widgets:
 - category
-- tag
+#- tag
 - tagcloud
-- archive
+#- archive
 - recent_posts
 - weibo
 
