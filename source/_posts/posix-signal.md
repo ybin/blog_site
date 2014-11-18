@@ -271,3 +271,10 @@ void mysleep(unsigned int t) {
 ##### POSIX实时信号
 
 待续。。。
+
+---
+
+#### 参考文档
+
+1. [All about Linux signals](http://www.linuxprogrammingblog.com/all-about-linux-signals?page=show)
+2. [Linux C编程一站式学习(pdf)](https://aboutc.googlecode.com/files/LinuxC.pdf)
