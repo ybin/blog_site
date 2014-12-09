@@ -32,6 +32,8 @@ endif
 ```
 
 ##### 活动图(activity diagram, new syntax)
+JamVM中对象锁的锁定流程。
+
 ```dot
 @startuml activity-diagram-new-syntax.png
 scale 1.5
@@ -66,14 +68,42 @@ stop
 ```
 
 ##### 类图（class diagram）
+UML中类之间的关系：依赖、关联、聚合、组合、继承、实现。
+
 ```dot
 @startuml class-diagram.png
-class Demo {
-    int i = 1;
-    int j = 2;
-    
-    +static void main()
+scale 1.5
+/'组合关系(composition)'/
+class Human {
+    - Head mHead;
+    - Heart mHeart;
+    ..
+    - CreditCard mCard;
+    --
+    + void travel(Vehicle vehicle);
 }
+
+Human *-up- Head : contains >
+Human *-up- Heart : contains >
+
+/'聚合关系(aggregation)'/
+Human o-left- CreditCard : owns >
+
+/'依赖关系(dependency)'/
+Human .down.> Vehicle : dependent
+
+/'关联关系(association'/
+Human -down-> Company : associate
+
+/'继承关系(extention)'/
+interface IProgram {
+    + void program();
+}
+class Programmer {
+    + void program();
+}
+Programmer -left-|> Human : extend
+Programmer .up.|> IProgram : implement
 @enduml
 ```
 
