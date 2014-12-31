@@ -438,13 +438,59 @@ trapret:
 
 继续看上面的图，`popal`弹出一堆寄存器值，`popl`又弹出一堆，然后`addl $0x8, %esp`越过
 trapno和errcode，接下来的就成了`eip`了(见`struct trapframe`)，然后`iret`(interrupt return)，
-返回到`eip`指定的地址继续执行，回到`userinit()`函数，`p->tf->eip = 0`，我们回到用户空间
-的0处执行，而此处已经被`inituvm()`放置上initcode.S的内容了，也就是说接下来执行initcode.S
-的内容。这个文件很简单，通过系统调用exec执行`/init`程序而已。
+返回到`eip`指定的地址继续执行，回到`userinit()`函数，
 
-### 存疑
-从scheduler()看来，每个CPU都会找RUNNABLE的进程执行，而一旦开始执行就会将进程状态设置为
-RUNNING，于是其他CPU不可能再执行这个进程了，这样看来，一个进程**同时**只能被一个CPU执行！
-当然，也有可能进程A被CPU0执行一段时间，然后不管是被中断还是时间片用完，还是自己主动shed，
-它都会再次进入RUNNABLE状态，然后其他CPU可能发现并执行它，但是**同一时刻**，它只能在一个
-CPU上执行。但是问题来了，一个进程在CPU0上被中断，然后还能在CPU1上被恢复吗？
+```c
+  memset(p->tf, 0, sizeof(*p->tf));
+  // 进入用户态之后使用这些值
+  p->tf->cs = (SEG_UCODE << 3) | DPL_USER;
+  p->tf->ds = (SEG_UDATA << 3) | DPL_USER;
+  p->tf->es = p->tf->ds;
+  p->tf->ss = p->tf->ds;
+  p->tf->eflags = FL_IF;
+  p->tf->esp = PGSIZE; // 用户栈从page size处逆向增长
+  p->tf->eip = 0;  // beginning of initcode.S，用户态代码
+```
+
+我们回到用户空间的0处执行，而此处已经被`inituvm()`放置上initcode.S的内容了，
+也就是说接下来执行initcode.S的内容。这个文件很简单，通过系统调用exec执行`/init`程序而已。
+
+```c
+/*
+ init进程的内存布局：
+ 
+ +--------------------+ 4GB                        
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ +--------------------+ KERNBASE+PHYSTOP(2GB+224MB)
+ |                    |                            
+ |   direct mapped    |                            
+ |   kernel memory    |                            
+ |                    |                            
+ +--------------------+                            
+ |    Kernel Data     |                            
+ +--------------------+ data                       
+ |    Kernel Code     |                            
+ +--------------------+ KERNLINK(2GB+1MB)          
+ |   I/O Space(1MB)   |                            
+ +--------------------+ KERNBASE(2GB)              
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ |                    |                            
+ +---------+----------+ PGSIZE <-- %esp                            
+ |         v          |                            
+ |       stack        |                            
+ |                    |                            
+ |                    |                            
+ |     initcode.S     |                            
+ +--------------------+ 0  <-- %eip               
+*/
+```
+
+(over)
