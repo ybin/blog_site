@@ -77,6 +77,9 @@ pagination_dir: page
 # Disqus
 disqus_shortname:
 
+# Duoshuo
+duoshuo_shortname: ybin
+
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
