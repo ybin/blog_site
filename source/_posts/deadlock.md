@@ -2,6 +2,7 @@
 date: 2015-01-07 09:33:23
 categories: 编程
 tags: [deadlock, 死锁]
+description: deadlock, 四个必要条件
 ---
 
 什么是死锁，死锁产生的四个必要条件是什么，如何理解这些条件？
