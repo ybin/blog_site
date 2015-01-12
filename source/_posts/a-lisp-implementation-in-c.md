@@ -419,6 +419,122 @@ int main(int argc, char *argv[]) {
 (CAR XX)
 ```
 
+### 论文中的Lisp实现
+Lisp就像几何一样，整个大厦建立在几个公理基础之上，Lisp要求实现如下几个函数，
+其他都可以由他们推演出来，
+
+1. `quote`
+2. `car`
+3. `cdr`
+4. `cons`
+5. `equal`
+6. `atom`
+7. `cond`
+8. An atom, regarded as a variable, may have a value
+9. `lambda`
+10. `label`，即给lambda函数命名，函数也是一个变量的值
+
+John McCarthy在其论文中用Lisp实现了Lisp，下面是代码及自己的注释，整个就是一个`eval`函数而已，
+`lambda`的实现很精彩啊！
+
+```lisp
+; e - the expression to be evaluted
+; a - the associate table, every element is a (variable, value) pair
+
+(label eval
+       (lambda (e a)
+               (cond
+                ; e is an atom
+                ((atom e)
+                 (cond ((eq e nil) nil)
+                       ((eq e T) T)
+                       ; e is an atom otherwise nil or T,
+                       ; so, find it in assoc table if exists
+                       (T (cdr ((label
+                                 assoc
+                                 (lambda (e a)
+                                         (cond ((null a) nil)
+                                               ((eq e (caar a)) (car a))
+                                               (T (assoc e (cdr a))))))
+                                e a)))))
+                
+                ; e is not atom, so it must be list
+                ; the first element of e is an atom
+                ((atom (car e))
+                 (cond ((eq (car e) (quote quote))   ; call quote
+                        (cadr e))
+                       ((eq (car e) (quote car))     ; call car
+                        (car (eval (cadr e) a)))
+                       ((eq (car e) (quote cdr))     ; call cdr
+                        (cdr (eval (cadr e) a)))
+                       ((eq (car e) (quote cadr))    ; call cadr
+                        (cadr (eval (cadr e) a)))
+                       ((eq (car e) (quote caddr))   ; call caddr
+                        (caddr (eval (cadr e) a)))
+                       ((eq (car e) (quote caar))    ; call caar
+                        (caadr (eval (cadr e) a)))
+                       ((eq (car e) (quote cadar))   ; call cadar
+                        (cadar (eval (cadr e) a)))
+                       ((eq (car e) (quote caddar))  ; call caddar
+                        (caddar (eval (cadr e) a)))
+                       ((eq (car e) (quote atom))    ; call atom
+                        (atom (eval (cadr e) a)))
+                       ((eq (car e) (quote null))    ; call null
+                        (null (eval (cadr e) a)))
+                       ((eq (car e) (quote cons))    ; call cons
+                        (cons (eval (cadr e) a) (eval (caddr e) a)))
+                       ((eq (car e) (quote eq))      ; call eq
+                        (eq (eval (cadr e) a) (eval (caddr e) a)))
+                       ((eq (car e) (quote cond))    ; call cond
+                        ((label evcond
+                                (lambda (v a) (cond ((eval (caar v) a)
+                                                     (eval (cadar v) a))
+                                                    (T (evcond (cdr v) a)))))
+                         (cdr e) a))
+                       (T (eval (cons (cdr ((label   ; call the 'value' of first element
+                                             assoc
+                                             (lambda (e a)
+                                                     (cond ((null a) nil)
+                                                           ((eq e (caar a)) (car a))
+                                                           (T (assoc e (cdr a))))))
+                                            (car e) a))
+                                      (cdr e))
+                                a))))
+                ; the first element of e is not atom, so it must be a list,
+                ; the first element of e is lambda expression
+                ((eq (caar e) (quote lambda))
+                 (eval (caddar e)        ; 取得lambda表达式的内容，下面准备参数，注意下面三个步骤的顺序，三层嵌套函数
+                       ((label ffappend  ; 3.将参数的值对儿添加到assoc table中去
+                               (lambda (u vv)
+                                       (cond ((null u) vv)
+                                             (T (cons (car u)
+                                                      (ffappend (cdr u) vv))))))
+                        ((label pairup   ; 2.将参数与真实值绑定成对
+                                (lambda (u vv)
+                                        (cond ((null u) nil)
+                                              (T (cons (cons (car u) (car vv))
+                                                       (pairup (cdr u) (cdr vv)))))))
+                         (cadar e)
+                         ((label evlis   ; 1.计算参数的值
+                                 (lambda (u a)
+                                         (cond ((null u) nil)
+                                               (T (cons (eval (car u) a)
+                                                        (evlis (cdr u) a))))))
+                          (cdr e) a))
+                        a)))
+                ; the first element of e is a label expression
+                ((eq (caar e) (quote label))
+                 (eval (cons (caddar e) (cdr e)) ; construct the content of label expression(e.g. a lambda expression) and the arguments as final expression
+                       (cons (cons (cadar e) (car e)) a)))))) ; add (label name, label content) pair to a(the assoc table)
+```
+
+`(eval expr assoc-table)`函数(label)分为四部分：
+
+1. expr是一个atom
+2. `(car expr)`是一个atom
+3. `(car expr)`是一个lambda表达式
+4. `(car expr)`是一个lable表达式(即函数定义)
+
 (over)
 
 [nakkaya]: https://github.com/nakkaya/nakkaya.com/blob/master/resources/posts/2010-08-24-a-micro-manual-for-lisp-implemented-in-c.org
