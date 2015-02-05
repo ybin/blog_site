@@ -1,15 +1,15 @@
-title: androidÆô¶¯native½ø³Ì
+ï»¿title: androidå¯åŠ¨nativeè¿›ç¨‹
 date: 2015-02-04 15:57:48
 categories: android
 tags: [android, process]
 description: android, native process, broadcast, c, c++
 ---
 
-´ÓAPPÆô¶¯native½ø³ÌÒÔ¼°´Ónative code·¢ËÍintent¡£
+ä»APPå¯åŠ¨nativeè¿›ç¨‹ä»¥åŠä»native codeå‘é€intentã€‚
 
 <!-- more -->
 
-### ´ÓAPPÆô¶¯native½ø³Ì
+### ä»APPå¯åŠ¨nativeè¿›ç¨‹
 
 ```java
 try {
@@ -19,7 +19,7 @@ try {
 }
 ```
 
-### ´Ónative code·¢ËÍintent
+### ä»native codeå‘é€intent
 
 ```c
 #include <stdlib.h>
