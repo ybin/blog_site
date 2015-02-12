@@ -1,4 +1,4 @@
-﻿title: clojure: sequence, seq, sequential and persistent collections
+﻿title: clojure术语之：sequence, seq, sequential and persistent collections
 date: 2015-02-05 09:32:32
 categories: clojure
 tags: [clojure, sequence, seq, sequential, collection]
