@@ -27,6 +27,7 @@ jar文件位于android.jar之前。
 gradle.projectsEvaluated {
     tasks.withType(JavaCompile) {
         options.compilerArgs << '-Xbootclasspath/p:your/absolute/path/to/framework.jar'
+        options.encoding = "GBK" // "UTF-8" etc
     }
 }
 ```
