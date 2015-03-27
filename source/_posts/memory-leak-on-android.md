@@ -1,4 +1,4 @@
-title: AndroidÀïµÄÄÚ´æĞ¹Â¶
+ï»¿title: Androidé‡Œçš„å†…å­˜æ³„éœ²
 date: 2015-03-11 08:49:10
 categories:
 tags:
@@ -7,7 +7,7 @@ description:
 
 ### static field
 
-static field´æ´¢ÔÚClass objectÀïÃæ£¬ËùÒÔ£¬±»static fieldÒıÓÃµÄ¶ÔÏó²»»á±»gc£¬
-³ı·ÇClass objectÖ÷¶¯ÊÍ·Å¸Ã
+static fieldå­˜å‚¨åœ¨Class objecté‡Œé¢ï¼Œæ‰€ä»¥ï¼Œè¢«static fieldå¼•ç”¨çš„å¯¹è±¡ä¸ä¼šè¢«gcï¼Œ
+é™¤éClass objectä¸»åŠ¨é‡Šæ”¾è¯¥
 
 ### inner class and anounymous inner class
