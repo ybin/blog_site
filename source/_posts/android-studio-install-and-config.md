@@ -1,4 +1,4 @@
-﻿title: android studio install and config
+﻿title: Android Studio安装和配置
 date: 2015-05-06 11:16:03
 categories: android
 tags: [android, studio]
