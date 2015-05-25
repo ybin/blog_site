@@ -1,37 +1,37 @@
-title: ÃüÁîĞĞ¹¤¾ß£ºfind
+ï»¿title: å‘½ä»¤è¡Œå·¥å…·ï¼šfind
 date: 2015-05-14 14:15:48
-categories: [¹¤¾ß]
-tags: [¹¤¾ß, find]
-description: ÃüÁîĞĞ¹¤¾ß, find, grep, recursive search
+categories: [å·¥å…·]
+tags: [å·¥å…·, find]
+description: å‘½ä»¤è¡Œå·¥å…·, find, grep, recursive search
 ---
 
-find¹¤¾ßµÄ¼òµ¥ÓÃ·¨¡£
+findå·¥å…·çš„ç®€å•ç”¨æ³•ã€‚
 
 <!-- more -->
 
-# Í³¼Æ´úÂëĞĞÊı
+# ç»Ÿè®¡ä»£ç è¡Œæ•°
 
 ```bash
 find . -type f -name "*.java" -or -name "*.xml" | xargs cat | wc -l
 # for GoW on Windows
 find . -type f -name "*.java" -or -name "*.xml" | tr \r\n ' ' | xargs cat | wc -l
 
-# ´úÂëËµÃ÷£º
--type f # ÎÄ¼şÀàĞÍÖ»¹Ø×¢file
--name "*.java" -or -name "*.xml" # Ö»¹Ø×¢javaºÍxmlÎÄ¼ş
-xargs cat # ´òÓ¡³öÎÄ¼şÄÚÈİ
-wc -l # Í³¼ÆĞĞÊı
-tr \r\n ' ' # ½«\r\n×ª»»Îª¿Õ¸ñ£¬·ñÔòxargs cat»áÎŞ·¨Õı³£·Ö¸îÎÄ¼şÃû£¬µ¼ÖÂÕÒ²»µ½ÎÄ¼ş
+# ä»£ç è¯´æ˜ï¼š
+-type f # æ–‡ä»¶ç±»å‹åªå…³æ³¨file
+-name "*.java" -or -name "*.xml" # åªå…³æ³¨javaå’Œxmlæ–‡ä»¶
+xargs cat # æ‰“å°å‡ºæ–‡ä»¶å†…å®¹
+wc -l # ç»Ÿè®¡è¡Œæ•°
+tr \r\n ' ' # å°†\r\nè½¬æ¢ä¸ºç©ºæ ¼ï¼Œå¦åˆ™xargs catä¼šæ— æ³•æ­£å¸¸åˆ†å‰²æ–‡ä»¶åï¼Œå¯¼è‡´æ‰¾ä¸åˆ°æ–‡ä»¶
 ```
 
-# µİ¹éËÑË÷Õû¸öÄ¿Â¼
+# é€’å½’æœç´¢æ•´ä¸ªç›®å½•
 
 ```bash
 find . -type f -name "*.java" -exec grep -i "onCreate" {} \;
 
-# ´úÂëËµÃ÷
--type f -name "*.java" # ÕÒµ½ËùÓĞµÄjavaÎÄ¼ş
--exec grep -inH "onCreate" {} \; # Ã¿ÕÒµ½Ò»¸ö¾ÍÖ´ĞĞgrepÃüÁî£¬{}´ú±íÕÒµ½µÄÎÄ¼şµÄÎÄ¼şÃû£¬ \; ·ÀÖ¹·ÖºÅ±»×ªÒâ
-                               # WindowsÉÏ²»ĞèÒª·ÖºÅ×ªÒâ
-                               # -i: ºöÂÔ´óĞ¡Ğ´£¬ -n: Êä³öĞĞºÅ£¬ -H: Êä³öÎÄ¼şÃû
+# ä»£ç è¯´æ˜
+-type f -name "*.java" # æ‰¾åˆ°æ‰€æœ‰çš„javaæ–‡ä»¶
+-exec grep -inH "onCreate" {} \; # æ¯æ‰¾åˆ°ä¸€ä¸ªå°±æ‰§è¡Œgrepå‘½ä»¤ï¼Œ{}ä»£è¡¨æ‰¾åˆ°çš„æ–‡ä»¶çš„æ–‡ä»¶åï¼Œ \; é˜²æ­¢åˆ†å·è¢«è½¬æ„
+                               # Windowsä¸Šä¸éœ€è¦åˆ†å·è½¬æ„
+                               # -i: å¿½ç•¥å¤§å°å†™ï¼Œ -n: è¾“å‡ºè¡Œå·ï¼Œ -H: è¾“å‡ºæ–‡ä»¶å
 ```

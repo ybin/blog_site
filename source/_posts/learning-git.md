@@ -17,4 +17,8 @@ Git学习资料推荐。
 
 如果时间充裕，通读《Pro Git》，其他资料都不用看了；如果时间紧张可以三个资料结合着看。
 
+另附一个git内部结构图，
+
+![git internal](/res/img/git.jpg)
+
 (over)
