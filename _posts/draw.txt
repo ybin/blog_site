@@ -1,0 +1,119 @@
+// main.c
+void swap(int *a, int *b);
+
+int main(void)
+{
+	int a, b;
+	a = 42;
+	b = 24;
+	swap(&a, &b);
+	
+	return 0;
+}
+
+// util.c
+#include <stdio.h>
+void print() {
+	printf("hello, world.");
+}
+
+void swap(int *a, int *b) {
+	int tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+
+util.o
+
+			+----------------------+
+			|	   ELF Header	   |
+			+======================+
+			|		 .text		   |
+			+=========+============+
+			|		  |   name	   | (print)
+			|		  |   value	   | (0x00)
+			|		  |   size	   | (0x18)
+			|		  |   ....	   |
+			|		  |   section  | (.text)
+			| .symtab +------------+
+			|		  |	  name	   | (swap)
+			| 		  |   value	   | (0x18)
+			|		  |   size	   | (0x2c)
+			|		  |   ....	   |
+			|		  |   section  | (.text)
+			|		  +------------+
+			|		  |	other ents |
+			+=========+============+
+			|	other sections	   |
+			+======================+
+			| Section Header Table |
+			+----------------------+
+
+main.o
+				+----------------------+
+				|	   ELF Header	   |
+				+======================+
+				|		 .text		   |
+				+===========+==========+
+				|		  	|  offset  | (0x25)
+				|		 	|  symbol  | (swap)
+				| .rel.text |  type	   | (R_X86_64_PC32)
+				|			+----------+
+				|			|	other  |
+				+===========+==========+
+				|	other sections	   |
+				+======================+
+				| Section Header Table |
+				+----------------------+
+
+
+txt_sec_ptr ->	+-------+--------------+ (runtime address: 0x4004f4) 
+				| 		| .text(main.o)|
+				| .text +--------------+ (runtime address: 0x400524)
+				|		| .text(util.o)|
+				+-------+--------------+
+
+sizeof(.text in main.o) = 0x30
+
+symtab_sec_ptr ->	+---------+------------+
+					|		  |   name	   | (print)
+					|		  |   value	   | (0x30) (old: 0x00)
+					|		  |   size	   | (0x18)
+					|		  |   ....	   |
+					|		  |   section  | (.text)
+					| .symtab +------------+
+					|		  |	  name	   | (swap)
+					| 		  |   value	   | (0x48) (old: 0x18)
+					|		  |   size	   | (0x2c)
+					|		  |   ....	   |
+					|		  |   section  | (.text)
+					+---------+------------+
+					
+ref_txt_ptr ->	+-----------+----------+
+				|		  	|  offset  | (0x25) (old: 0x25)
+				|		 	|  symbol  | (swap)
+				| .rel.text |  type	   | (R_X86_64_PC32)
+				|			+----------+
+				|			|	other  |
+				+-----------+----------+
+
+                
+signal in kernel:
+
+     task_struct
+    +-----------+
+    |           |
+    |   .....   |
+    |           |
+    +-----------+               block  pending    handler
+    |           | ------------> +---+   +---+   +---------+
+    +-----------+   SIGHUP(1)   | 0 |   | 0 |   | SIG_DFL |
+    |           |               +---+   +---+   +---------+
+    +-----------+   SIGINT(2)   | 1 |   | 1 |   | SIG_IGN |
+                                +---+   +---+   +---------+
+                    SIGQUIT(3)  | 1 |   | 0 |   |         | ------> +----------------+
+                                +---+   +---+   +---------+         |  user defined  |
+                    ......      |...|   |...|   | ....... |         | signal handler |
+                                                                    +----------------+

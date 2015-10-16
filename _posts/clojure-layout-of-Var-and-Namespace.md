@@ -1,4 +1,4 @@
-﻿title: clojure: Var和Namespace在内存中的布局
+﻿title: clojure的Var和Namespace在内存中的布局
 date: 2015-02-03 11:09:10
 categories: clojure
 tags: [clojure, java]
