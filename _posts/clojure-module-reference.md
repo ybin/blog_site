@@ -2,7 +2,6 @@
 date: 2015-02-12 16:42:59
 categories: clojure
 tags: [clojure, module]
-description: clojure, module, import, require, use
 ---
 
 clojure模块引用。

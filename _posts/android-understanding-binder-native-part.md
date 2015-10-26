@@ -2,7 +2,6 @@
 date: 2015-04-02 14:36:06
 categories: android
 tags: [android, c++, binder]
-description: android, c++, native, binder, ipc, aidl
 ---
 
 

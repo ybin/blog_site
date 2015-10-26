@@ -2,7 +2,6 @@
 date: 2015-02-05 09:32:32
 categories: clojure
 tags: [clojure, sequence, seq, sequential, collection]
-description: clojure, sequence, seq, sequential, collection
 ---
 
 clojure中的sequence, seq, sequential以及persistent collections之间的关系。

@@ -2,7 +2,6 @@
 date: 2015-02-27 17:04:28
 categories: gradle
 tags: [gradle, plugin]
-description: gradle, plugin, groovy
 ---
 
 通过一个简单的实例，学习如何创建Gradle插件。

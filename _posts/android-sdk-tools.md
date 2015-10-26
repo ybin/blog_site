@@ -2,7 +2,6 @@
 date: 2015-03-06 10:00:54
 categories: android
 tags: [android, sdk]
-description: android sdk, sdk tools, sdk platform tools, sdk build tools, platform
 ---
 
 Android SDK中各种tool的用途。

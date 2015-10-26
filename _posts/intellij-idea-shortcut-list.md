@@ -2,7 +2,6 @@
 date: 2015-02-06 16:42:14
 categories: 工具
 tags: [java, 工具, intellij]
-description: 编程工具, IntelliJ Idea, 快捷键, shortcuts
 ---
 
 IntelliJ Idea快捷键记录。

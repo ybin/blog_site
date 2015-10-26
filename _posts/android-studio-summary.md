@@ -2,7 +2,6 @@
 date: 2015-03-04 15:26:48
 categories: android
 tags: [android, gradle]
-description: android studio, gradle, intellij idea, customed jar, customed framework
 ---
 
 使用自定义framework.jar的app项目（如在框架层增加私有接口）如何使用Android Studio？

@@ -2,7 +2,6 @@
 date: 2015-03-16 15:29:16
 categories: 编程
 tags: [bash, tip]
-description: bash tips
 ---
 
 Bash tips.

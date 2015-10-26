@@ -2,7 +2,6 @@
 date: 2015-05-05 14:15:06
 categories: [design pattern]
 tags: [design pattern]
-description: design pattern, proxy, decorator, adapter, aop
 ---
 
 proxy, decorator, adpter，三种设计模式之间的差别比较细微，尤其是proxy和decorator，

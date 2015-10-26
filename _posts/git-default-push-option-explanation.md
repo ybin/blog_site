@@ -2,7 +2,6 @@
 date: 2015-05-21 09:19:38
 categories: git
 tags: [git]
-description: git push, nothing simple upstream current matching, git config push.default
 ---
 
 `git push`的默认行为介绍。

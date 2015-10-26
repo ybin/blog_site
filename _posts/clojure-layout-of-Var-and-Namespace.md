@@ -2,7 +2,6 @@
 date: 2015-02-03 11:09:10
 categories: clojure
 tags: [clojure, java]
-description: clojure source code, java, Var, Namespace
 ---
 
 Clojure中，Var和Namespace的内存布局。

@@ -2,7 +2,6 @@
 date: 2015-03-11 08:49:10
 categories:
 tags:
-description:
 ---
 
 ### static field

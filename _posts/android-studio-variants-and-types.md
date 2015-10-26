@@ -2,7 +2,6 @@
 date: 2015-03-19 13:58:59
 categories: android
 tags: [android, build, android studio]
-description: android, build, android studio, variant, flavor, types, debug, release, gradle
 ---
 
 一个App可能有免费版和付费版之分，还可能有Phone何Tablet之分，但是不论什么版本，它们之间都有很大的

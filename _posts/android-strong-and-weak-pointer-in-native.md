@@ -2,7 +2,6 @@
 date: 2015-04-07 16:10:36
 categories: android
 tags: [android]
-description: android, strong pointer, sp, weak pointer, wp, refbase
 ---
 
 Android源码中，C++层面中的强指针和弱指针实现原理。

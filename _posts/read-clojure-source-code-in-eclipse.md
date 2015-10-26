@@ -2,7 +2,6 @@
 date: 2015-01-20 12:30:02
 categories: clojure
 tags: [clojure, eclipse, java]
-description: clojure source code eclipse java
 ---
 
 如何使用eclipse阅读[clojure][clojure]源码的Java部分。

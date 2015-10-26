@@ -2,7 +2,6 @@
 date: 2015-05-06 11:16:03
 categories: android
 tags: [android, studio]
-description: android studio 1.2 gradle user home config
 ---
 
 Android Studio(AS) 1.2的安装与配置。以下只针对1.2版本。

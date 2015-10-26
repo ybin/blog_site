@@ -2,7 +2,6 @@
 date: 2015-02-04 15:57:48
 categories: android
 tags: [android, process]
-description: android, native process, broadcast, c, c++
 ---
 
 从APP启动native进程以及从native code发送intent。

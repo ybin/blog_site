@@ -2,7 +2,6 @@
 date: 2015-03-27 15:43:37
 categories: android
 tags: [android, view]
-description: android, view, transform, rotate, translate, scale
 ---
 
 View的平移、缩放、旋转等变换。

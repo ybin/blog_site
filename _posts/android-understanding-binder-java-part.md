@@ -2,7 +2,6 @@
 date: 2015-03-30 16:29:47
 categories: android
 tags: [android, java, binder]
-description: android, java, binder, ipc, aidl
 ---
 
 通过一个实例来展示如何在Java层使用Android binder进行跨进程通讯。

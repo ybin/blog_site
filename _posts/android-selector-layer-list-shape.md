@@ -2,7 +2,6 @@
 date: 2015-08-07 16:43:29
 categories: [android]
 tags: [android, shape, layer-list, level-list, inset]
-description: android, shape, layer-list, level-list, inset
 ---
 
 Android中的简单几何矢量图示例。

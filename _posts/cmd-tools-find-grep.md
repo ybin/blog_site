@@ -2,7 +2,6 @@
 date: 2015-05-14 14:15:48
 categories: [工具]
 tags: [工具, find]
-description: 命令行工具, find, grep, recursive search
 ---
 
 find工具的简单用法。

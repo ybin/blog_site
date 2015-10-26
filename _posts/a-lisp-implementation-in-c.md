@@ -2,7 +2,6 @@
 date: 2015-01-12 10:08:00
 categories: 编程
 tags: [lisp, c]
-description: lisp实现 lisp implementation c source code
 ---
 
 一个简易的Lisp实现，in C。

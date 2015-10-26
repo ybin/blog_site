@@ -2,7 +2,6 @@
 date: 2015-01-26 11:09:11
 categories: 编程
 tags: [java]
-description: java interface abstract method field
 ---
 
 Java Interface中的方法和属性都是如何修饰的，即可以使用什么修饰符？
