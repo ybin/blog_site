@@ -1,6 +1,6 @@
 ﻿title: 安装JamVM
 date: 2014-11-18 14:43:15
-categories: JVM
+categories: jvm
 tags: [JamVM, JVM]
 ---
 

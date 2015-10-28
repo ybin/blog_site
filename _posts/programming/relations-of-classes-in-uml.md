@@ -1,6 +1,6 @@
 ﻿title: UML中类之间的关系：依赖, 关联, 聚合, 组合, 继承, 实现
 date: 2014-12-04 13:47:30
-categories: UML
+categories: 编程
 tags: [UML, PlantUML]
 ---
 

@@ -1,6 +1,6 @@
 ﻿title: Introduction to JIT
 date: 2014-11-12 11:12:41
-categories: 编译器
+categories: jvm
 tags: JIT
 ---
 

@@ -1,6 +1,6 @@
 ﻿title: JamVM简介
 date: 2014-11-14 16:30:06
-categories: JVM
+categories: jvm
 tags: [JamVM, JVM]
 ---
 

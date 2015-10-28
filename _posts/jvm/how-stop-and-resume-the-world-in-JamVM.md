@@ -1,6 +1,6 @@
 ﻿title: JamVM如何实现Stop-The-World
 date: 2014-11-14 16:30:17
-categories: JVM
+categories: jvm
 tags: [JamVM, JVM]
 ---
 

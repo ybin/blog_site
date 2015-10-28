@@ -1,6 +1,6 @@
 ﻿title: JamVM的解释器
 date: 2014-12-03 16:23:05
-categories: JVM
+categories: jvm
 tags: [Jamvm, JVM]
 ---
 

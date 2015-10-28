@@ -1,7 +1,7 @@
 ﻿title: Android里的内存泄露
 date: 2015-03-11 08:49:10
-categories:
-tags:
+categories: android
+tags: [android, memory leak]
 ---
 
 ### static field
