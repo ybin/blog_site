@@ -1,0 +1,4 @@
+https://registry.nodejitsu.com
+
+$ npm install --registry http://registry.npmjs.org
+$ npm config set registry http://registry.npmjs.org
