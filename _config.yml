@@ -75,6 +75,10 @@ theme: next
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://gitcafe.com/ybin/ybin.git
-  branch: gitcafe-pages
+  repository: https://git.coding.net/ybin/ybin.git
+  branch: coding-pages
+  message: hexo deploy
+  type: git
+  repository: https://github.com/ybin/ybin.github.io.git
+  branch: master
   message: hexo deploy
